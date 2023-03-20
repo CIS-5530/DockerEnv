@@ -35,13 +35,13 @@ rm -rf /var/lib/apt/lists/*
 RUN apt install -y g++-9 gcc-9
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
 
-# Setting up cis553 as the user 
+# Setting up cis5530 as the user 
 ARG GID=1000
 ARG UID=1000
-RUN addgroup --gid $GID cis553
-RUN useradd --system --create-home --shell /bin/bash --groups sudo -p "$(openssl passwd -1 mcit)" --uid $UID --gid $GID cis553
+RUN addgroup --gid $GID cis5530
+RUN useradd --system --create-home --shell /bin/bash --groups sudo -p "$(openssl passwd -1 cis5530)" --uid $UID --gid $GID cis5530
 RUN wget -O /root/.vimrc https://raw.githubusercontent.com/CIS548/gists/master/example_vimrc.txt
-RUN cp /root/.vimrc /home/cis553/.vimrc
-RUN chown cis553:cis553 /home/cis553/.vimrc
-USER cis553
-WORKDIR /home/cis553/
+RUN cp /root/.vimrc /home/cis5530/.vimrc
+RUN chown cis5530:cis5530 /home/cis5530/.vimrc
+USER cis5530
+WORKDIR /home/cis5530/
